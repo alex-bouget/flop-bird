@@ -1,7 +1,10 @@
 import Phaser from 'phaser';
+import Background from './pack/background';
 
 class MyGame extends Phaser.Scene
 {
+    background = null;
+
     constructor ()
     {
         super();
@@ -9,36 +12,24 @@ class MyGame extends Phaser.Scene
 
     preload ()
     {
-        //  This is an example of a bundled image:
-        this.load.image('logo', logoImg);
-
         //  This is an example of loading a static image from the public folder:
         this.load.image('background', 'assets/bg.jpg');
     }
       
     create ()
     {
-        this.add.image(400, 300, 'background');
-
-        const logo = this.add.image(400, 150, 'logo');
-      
-        this.tweens.add({
-            targets: logo,
-            y: 450,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1
-        });
+        // Get the width and height of the game window
+        this.background = new Background(this, "background");
     }
 }
 
 const config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
-    width: 800,
-    height: 600,
-    scene: MyGame
+    pixelArt: true,
+    scene: MyGame,
+    width: window.innerWidth,
+    height: window.innerHeight
 };
 
 const game = new Phaser.Game(config);
