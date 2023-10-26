@@ -1,5 +1,16 @@
-#include <SFML/Graphics.hpp>
 
+#include <SFML/Graphics.hpp>
+#include "engine.hpp"
+
+int main()
+{
+    Engine engine("Flop");
+    engine.run();
+
+    return 0;
+}
+
+/*
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
@@ -22,4 +33,4 @@ int main()
     
 
     return 0;
-}
+}*/
